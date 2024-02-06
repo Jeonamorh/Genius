@@ -1,14 +1,16 @@
 "use client";
 
-import { UserButton } from "@clerk/nextjs";
-import { tools } from "@/constants";
+import { ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
+
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
 
-const dashboardPage = () => {
+import { tools } from "@/constants";
+
+export default function HomePage() {
   const router = useRouter();
+
   return (
     <div>
       <div className="mb-8 space-y-4">
@@ -38,6 +40,4 @@ const dashboardPage = () => {
       </div>
     </div>
   );
-};
-
-export default dashboardPage;
+}
