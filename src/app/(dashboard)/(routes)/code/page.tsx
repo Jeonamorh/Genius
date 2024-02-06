@@ -12,7 +12,8 @@ import { formSchema } from "./constants";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { ChatCompletionMessage } from "openai";
+// import { ChatCompletionMessageParam } from "openai";
+
 import { UserAvatar } from "@/components/user-avatar";
 import { BotAvatar } from "@/components/bot-avatar";
 import { Empty } from "@/components/empty";
@@ -21,10 +22,14 @@ import { cn } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
 import { useProModal } from "@/hooks/use-pro-modal";
 import toast from "react-hot-toast";
-
+interface ChatCompletionRequestMessage {
+  role: "user" | "assistant" | "system";
+  content: string;
+  name?: string;
+}
 const CodeGenerationPage = () => {
   const router = useRouter();
-  const [messages, setMessages] = useState<ChatCompletionMessage[]>([]);
+  const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

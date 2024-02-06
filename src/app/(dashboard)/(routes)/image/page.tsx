@@ -1,23 +1,21 @@
 "use client";
 
 import { Heading } from "@/components/heading";
-import { Download, MessageSquare, Music } from "lucide-react";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { formSchema, amountOptions, resolutionOptions } from "./constants";
+import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import { Download, Music } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { ChatCompletionMessage } from "openai";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { amountOptions, formSchema, resolutionOptions } from "./constants";
+
 import { Empty } from "@/components/empty";
 import { Loader } from "@/components/loader";
-import { UserAvatar } from "@/components/user-avatar";
-import { BotAvatar } from "@/components/bot-avatar";
-import { cn } from "@/lib/utils";
+import { Card, CardFooter } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -25,9 +23,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Card, CardFooter } from "@/components/ui/card";
-import Image from "next/image";
 import { useProModal } from "@/hooks/use-pro-modal";
+import Image from "next/image";
 import toast from "react-hot-toast";
 
 const ConversationPage = () => {
